@@ -45,15 +45,45 @@ Now you might be confuse with unique version of the word, please look our the pr
         lookup[temp].push_back(word);
     }
 ```
-to maintain a unique version of each word we use the sorted version as key as shown above.
+to maintain a unique version of each word we use the sorted version as key as shown on line 43. line 45 collects anagrams of each word into into an array stored as value pair to the word as key pair in the lookup table.
 
 
 * groups anagrams of given words from the lookup table :
-  to collect the result in the required we create a 2 dimensional array of strings to groups anagrams of given words.
+  to collect the result in the required format we create a 2 dimensional array of strings to groups anagrams of given words.
 ```
 vector<vector<string>> group;
 ```
-```bash
- unordered_map<string,vector<string>> lookup; //simple lookup table
+We want to move each values in the lookup table, this forms our grouped anagrams. we make use of move semeantics for memory efficiency.
 ```
+ for(auto &wrd:lookup) 
+    	group.push_back(move(wrd.second));//note use of move semeantics for memory efficiency
+```
+
+* Here is the full function code :
+```
+vector<vector<string>> groupAnagrams(const vector<string>& strs)
+{
+	//simple lookup table
+    unordered_map<string,vector<string>> lookup;
+
+    //for each word have a unique mapping of array of anagrams in the lookup table
+    for(const auto &word:strs)
+    {
+        string temp {word};
+        //sort to get a unique version as key
+        sort(temp.begin(),temp.end());
+        //append to the anagram list pointing to by that key
+        lookup[temp].push_back(word);
+    }
+
+    //assemble the result
+    vector<vector<string>> group;
+
+    for(auto &wrd:lookup) 
+    	group.push_back(move(wrd.second));//note use of move semeantics for memory efficiency
+    return group;
+}
+```
+
+*Full implementation is found on the main.cpp file.
 

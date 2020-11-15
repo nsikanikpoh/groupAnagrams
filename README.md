@@ -53,7 +53,8 @@ to maintain a unique version of each word we use the sorted version as key as sh
 ```
 vector<vector<string>> group;
 ```
-We want to move each values in the lookup table, this forms our grouped anagrams. we make use of move semeantics for memory efficiency.
+We want to get each values in the lookup table, this forms our grouped anagrams. we make use of std::move for memory efficiency.
+if you are not familiar with move semantics please read on this links https://en.cppreference.com/w/cpp/algorithm/move and https://stackoverflow.com/questions/3413470/what-is-stdmove-and-when-should-it-be-used
 ```
  for(auto &wrd:lookup) 
     	group.push_back(move(wrd.second));//note use of move semeantics for memory efficiency

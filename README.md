@@ -23,7 +23,7 @@ include the following:
 ```
 
 * create a simple lookup table of key as string, and value as vector<string> :
-  In this tutorial we would be using unordered_map. Unordered map is an associative container that contains key-value pairs with unique keys. learn more on this link https://en.cppreference.com/w/cpp/container/unordered_map.
+  In this tutorial we would be using unordered_map. Unordered map is an associative container that contains key-value pairs with unique keys. [learn more here](https://en.cppreference.com/w/cpp/container/unordered_map).
 ```bash
  unordered_map<string,vector<string>> lookup; //simple lookup table
 ```
@@ -54,7 +54,7 @@ to maintain a unique version of each word we use the sorted version as key as sh
 vector<vector<string>> group;
 ```
 We want to get each values in the lookup table, this forms our grouped anagrams. we make use of std::move for memory efficiency.
-if you are not familiar with move semantics please read on this links https://en.cppreference.com/w/cpp/algorithm/move and https://stackoverflow.com/questions/3413470/what-is-stdmove-and-when-should-it-be-used
+if you are not familiar with move semantics [please learn more here](https://en.cppreference.com/w/cpp/algorithm/move)  and [this stackoverflow](https://stackoverflow.com/questions/3413470/what-is-stdmove-and-when-should-it-be-used) 
 ```
  for(auto &wrd:lookup) 
     	group.push_back(move(wrd.second));//note use of move semeantics for memory efficiency

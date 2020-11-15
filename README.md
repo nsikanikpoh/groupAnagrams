@@ -85,6 +85,32 @@ vector<vector<string>> groupAnagrams(const vector<string>& strs)
     return group;
 }
 ```
+* Time complexity :
+The overall time complexity of above implementation is O(N). We implemented 2 for loops.
+```
+//for each word have a unique mapping of array of anagrams in the lookup table
+    for(const auto &word:strs)
+    {
+        ....
+    }
+```
+and 
+```
+for(auto &wrd:lookup) 
+    	....
+```
+on seperate data structures and seperate time. this loops the data once and perform perform given task(s) one at a time. This guarantees O(n) time complexity. The larger the data, the larger the amount of time it takes to execute.
+
+* Space complexity :
+The overall space complexity of above implementation is O(N). If you are not familiar with space complexity [read more here](https://courses.cs.northwestern.edu/311/html/space-complexity.html#:~:text=Space%20complexity%20is%20a%20measure,of%20the%20input%20problem%20grows.)  we created 2 data structures 
+```
+unordered_map<string,vector<string>> lookup;
+```
+and 
+```
+vector<vector<string>> group;
+```
+each of them O(N). The space complexity of these 2 data structures varies with strs (array of words given) data size. The larger the data, the larger the amount of memory needed for execution. Also not we pass objects by reference on loops this prevents new objects from being created to consume more memory.
 
 *Full implementation is found on the main.cpp file.
 
